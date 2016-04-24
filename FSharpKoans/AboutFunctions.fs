@@ -17,15 +17,22 @@ module ``about functions`` =
        by indentation. *)
 
     let add x y =
-        x + y
+        x * y
+
+    let multiply x y =
+        x * y
 
     [<Koan>]
     let CreatingFunctionsWithLet() =
         let result1 = add 2 2
         let result2 = add 5 2
-        
-        AssertEquality result1 __
-        AssertEquality result2 __
+        let result3 = multiply 3 3
+        let result4 = multiply 3 1
+
+        AssertEquality result1 4
+        AssertEquality result2 10
+        AssertEquality result3 9
+        AssertEquality result4 3
 
     [<Koan>]
     let NestingFunctions() =
@@ -36,7 +43,7 @@ module ``about functions`` =
             double(double(x))
 
         let result = quadruple 4
-        AssertEquality result __
+        AssertEquality result 16
 
     [<Koan>]
     let AddingTypeAnnotations() =
@@ -48,13 +55,13 @@ module ``about functions`` =
             text.Replace(" ", "")
 
         let auctioneered = sayItLikeAnAuctioneer "going once going twice sold to the lady in red"
-        AssertEquality auctioneered __
+        AssertEquality auctioneered "goingoncegoingtwicesoldtotheladyinred"
 
         //TRY IT: What happens if you remove the type annotation on text?
 
     [<Koan>]
     let VariablesInTheParentScopeCanBeAccessed() =
-        let suffix = "!!!"
+        let mutable suffix = "!!!"
 
         let caffeinate (text:string) =
             let exclaimed = text + suffix
@@ -63,7 +70,7 @@ module ``about functions`` =
 
         let caffeinatedReply = caffeinate "hello there"
 
-        AssertEquality caffeinatedReply __
+        AssertEquality caffeinatedReply "HELLO THERE!!!"
 
         (* NOTE: Accessing the suffix variable in the nested caffeinate function 
                  is known as a closure. 
