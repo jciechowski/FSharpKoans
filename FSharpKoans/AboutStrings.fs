@@ -84,9 +84,9 @@ module ``about strings`` =
         (* It's time to apply what you've learned so far. Fill in the function below to
            make the asserts pass *)
         let getFunFacts x =
-            let doubleX = 2*x
-            let tripleX = 3*x
-            printfn "%d doubled is %d, and %d tripled is %d!" x doubleX x tripleX
+            let message = x.ToString() + " doubled is " + (2*x).ToString() + ", and " + x.ToString() + " tripled is " + (3*x).ToString() + "!"
+            message
+            
 
         let funFactsAboutThree = getFunFacts 3
         let funFactsAboutSix = getFunFacts 6
